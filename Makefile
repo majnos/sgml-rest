@@ -1,0 +1,26 @@
+SRC_PATH=./src
+TEST_PATH=./test
+APP_PATH=./src/
+
+ensure-pip:
+	pip install --user --upgrade pipenv pip
+	pip --version
+	pipenv --version
+
+install:
+	pipenv install
+
+clean:
+	pipenv --rm
+
+lint:
+	pipenv run pycodestyle --show-source --show-pep8 ./
+
+precommit: lint test
+
+start:
+	$(source ./env.sh) 
+	pipenv run python ./src/app.py
+
+verify:
+	pipenv run pytest test/test.py

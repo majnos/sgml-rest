@@ -1,0 +1,9 @@
+[
+  "test/test.py::test_list_query_returns_full_lists",
+  "test/test.py::test_list_query_returns_no_body",
+  "test/test.py::test_api_returns_detail_on_id",
+  "test/test.py::test_api_returns_body_in_detail",
+  "test/test.py::test_api_returns_fulltext",
+  "test/test.py::test_filter_places_returns_value",
+  "test/test.py::test_filter_places_and_topics_returns_values"
+]
