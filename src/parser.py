@@ -1,4 +1,4 @@
- FILE = '../data/reut2-000.sgm'
+FILE = '../data/reut2-000.sgm'
 
 from bs4 import BeautifulSoup
 soup = BeautifulSoup(open(FILE), "html.parser") # consider using lxml to get better speed
@@ -10,4 +10,3 @@ datelines = soup.find_all('dateline') # get entries
 reuters = soup.find_all("reuters", attrs={"oldid":"16309"})
 
 print('stop')
-
