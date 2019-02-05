@@ -1,14 +1,3 @@
-https://stackoverflow.com/questions/4452537/sgml-to-xml-conversion
-https://github.com/ankailou/reuters-preprocessing
-https://code-examples.net/es/docs/scikit_learn/auto_examples/applications/plot_out_of_core_classification
-https://medium.com/@franksands/searching-an-xml-in-python-77d8028dea42
-https://stackoverflow.com/questions/2612548/extracting-an-attribute-value-with-beautifulsoup
-pip freeze > requirements.txt
-osx file1.sgl > file2.xml
-https://hackernoon.com/reaching-python-development-nirvana-bb5692adf30c
-
-how-to install pyenv:
-
 #!/bin/bash
 
 sudo apt-get install build-essential git libreadline-dev zlib1g-dev libssl-dev libbz2-dev libsqlite3-dev

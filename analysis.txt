@@ -1,0 +1,66 @@
+
+schema:
+{
+  "reuters": {
+    "attr": {
+      "newid",
+      "oldid",
+      "n",
+      "set",
+      "cgisplit",
+      "ewissplit",
+      "topics",
+    },
+    "date",
+    "topics",
+    "places",
+    "people",
+    "orgs",
+    "exchanges",
+    "companies",
+    "unknown",
+    "text": {
+        "title",
+        "dateline",
+        "body"
+      }
+  }
+}
+
+
+Expected APIs
+1. API to list content
+  a) list by date
+     * greater than datetime
+     * lower than datetime
+     * in range of 2 datetimes
+  b) list by type of the content:
+
+    "topics",
+    "places",
+    "people",
+    "orgs",
+    "exchanges",
+    "companies",
+
+2. API to search content
+ create full text search over these fields:
+     "text": {
+        "title",
+        "dateline",
+        "body"
+      }
+      returns none, one or many
+3. API get a specific content by id/any identifier
+  metadata are equal to one specific value:
+  e.g. : <REUTERS TOPICS="YES" LEWISSPLIT="TRAIN" CGISPLIT="TRAINING-SET" OLDID="5544" NEWID="1">
+    "reuters": {
+    "attr": {
+      "newid",
+      "oldid",
+      "set",
+      "cgisplit",
+      "lewissplit",
+      "topics",
+    },
+
