@@ -25,3 +25,27 @@ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 echo 'pyenv virtualenvwrapper' >> ~/.bashrc
 
 exec $SHELL
+
+install
+
+pyenv install
+
+
+// experimental:
+import os
+abs_path = os.path.dirname(__file__) #<-- absolute dir the script is in
+rel_path = "../sgm-data/reut2-020.sgm"
+sgm_file = os.path.join(abs_path, rel_path)
+
+from bs4 import BeautifulSoup
+with open(sgm_file, encoding="utf8", errors='ignore') as file:
+    soup = BeautifulSoup(file, "html.parser") # consider using lxml to get better speed
+    entries = soup.find_all('reuters') # get entries
+    dates = soup.find_all('date') # get entries
+    titles = soup.find_all('title') # get entries
+    topics = soup.find_all('topics') # get entries
+    date = soup.find_all('date') # get entries
+    datelines = soup.find_all('dateline') # get entries
+    reuters = soup.find_all("reuters", attrs={"oldid":"16309"})
+
+print('stop')
