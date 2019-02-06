@@ -11,7 +11,7 @@ app = Flask('Reuters REST')
 
 @app.route('/reuters/articles', methods=['GET'])
 def return_overview():
-    return jsonify(articles.find_all(request.args))
+    return jsonify(articles.find_list(request.args))
 
 @app.route('/reuters/search', methods=['GET'])
 def return_fulltext():
@@ -19,8 +19,8 @@ def return_fulltext():
 
 @app.route('/reuters/articles/<id>', methods=['GET'])
 def return_detail(id):
-    return jsonify(articles.find_one(id))
+    return jsonify(articles.find_id(id))
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5002))
+    port = int(os.environ.get('PORT', 5005))
     app.run(host='0.0.0.0', port=port, debug=True)
