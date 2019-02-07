@@ -1,73 +1,99 @@
+# logic of the whole app
+
 import json
-from schema import LISTITEMS, METADATA, FULLTEXT
+# from schema import METADATA, FULLTEXT
 from model import to_detail_view, to_list_view
 from nested import getByDot
 from flask import make_response, jsonify, render_template, abort
-from errors import InvalidKey
+# from errors import InvalidKey
 
 class Articles:
     def __init__(self, file_path):
         with open(file_path) as f:
             self.raw_data = json.load(f)
 
-    def find_list(self, query={}):
-        print('dummy_all:', query)
-        return self.get_filtered_view(query)
-
-    # def find_id(self, query={}):
-    #     print('dummy_one', query)
-
     def get_filtered_view(self, query={}):
         try:
             output = []
             for article in self.raw_data:
-                if self.match_article(article, query):
+                if self.match_all(article, query):
                     output.append(to_list_view(article))
             return output
         except KeyError:
             abort(404)
 
-    # def get_filtered_detail(self, query):
-    #     output = []
-    #     for article in self.raw_data:
-    #         if self.match_article(article, query):
-    #             output.append(toDetailView(article))
-    #     return output
+    def get_filtered_detail(self, query):
+        try:
+            output = []
+            for article in self.raw_data:
+                if self.match_single(article, query):
+                    output.append(to_detail_view(article))
+                    return output
+            return output
+        except KeyError:
+            abort(404)
 
-    def match_article(self, article, query):
+    def get_fulltext_detail(self, query):
+        try:
+            output = []
+            for article in self.raw_data:
+                if self.match_fulltext(article, query):
+                    output.append(to_detail_view(article))
+                    return output
+            return output
+        except KeyError:
+            abort(404)
+
+    def match_single(self, article, newid):
+            matched_key = 'metadata.newid'
+            if self.match_item2item(newid, getByDot(article, matched_key)):
+                return True
+            return False
+
+    def match_all(self, article, query):
         for key in query:
+            matching = False
             value = query[key]
-            matched_key = self.add_prefix(key)
-            if isinstance(getByDot(article, matched_key), list):
-                if self.match_list(value, getByDot(article, matched_key)):
-                    return True
-                else:
-                    return False
-            elif isinstance(getByDot(article, matched_key), str):
-                if self.match_single(value, getByDot(article, matched_key)):
-                    return True
-                else:
-                    return False
+            if isinstance(getByDot(article, key), list):
+                if self.match_item2list(value, getByDot(article, key)):
+                    matching = True
+            elif isinstance(getByDot(article, key), str):
+                if self.match_item2item(value, getByDot(article, key)):
+                    matching = True
+            if not matching:
+                return False
+            else:
+                return True
+
+    def match_fulltext(self, article, query):
+        for key in query:
+            matching = False
+            value = query[key]
+            if isinstance(getByDot(article, key), str):
+                if self.match_item2list(value, getByDot(article, key)):
+                    matching = True
+            if not matching:
+                return False
+            else:
+                return True
             
-    def match_single(self, item1, item2):
+    def match_item2item(self, item1, item2):
         if (item1 == item2):
             return True
         else:
             return False
 
-    def match_list(self, item, list):
+    def match_item2list(self, item, list):
         if (item in list):
             return True
         else:
             return False
     
-    def add_prefix(self, key):
-        if key in METADATA:
-            return 'metadata.'+key
-        # if key in LISTITEMS:
-        #     return 'listitems.'+key
-        elif key in FULLTEXT:
-            return 'fulltext.'+key
-        else:
-            return key
+    # def add_prefix(self, key):
+    #     if key in METADATA:
+    #         return 'metadata.'+key
+    #     elif key in FULLTEXT:
+    #         return 'fulltext.'+key
+    #     else:
+    #         return key
 

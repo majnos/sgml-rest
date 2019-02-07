@@ -1,22 +1,25 @@
-METADATA = {
-  "newid",
-  "oldid",
-  "cgisplit",
-  "lewissplit",
-  "topics"
-}
+# Keeping structure the same as in original file
+# This allows me to use javascript dot notation to get into nested jsons
 
-FULLTEXT = {
-  "title",
-  "dateline",
-  "body"
-}
+# METADATA = {
+#   "newid",
+#   "oldid",
+#   "cgisplit",
+#   "lewissplit",
+#   "topics"
+# }
 
-LISTITEMS = {
-  "places",
-  "people",
-  "orgs",
-  "exchanges",
-  "companies"
-  "topics"
-}
+# FULLTEXT = {
+#   "title",
+#   "dateline",
+#   "body"
+# }
+
+# LISTITEMS = {
+#   "places",
+#   "people",
+#   "orgs",
+#   "exchanges",
+#   "companies"
+#   "topics"
+# }

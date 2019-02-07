@@ -1,3 +1,7 @@
+# 2 configurable views
+# one with all info and one just to get the overview, perhaps it could be reduced even more
+# i am able to reduce the amount of data transfered by this
+
 def to_list_view(article):
     return {
         'metadata': {
@@ -16,7 +20,8 @@ def to_list_view(article):
         'people': article['people'],
         'orgs': article['orgs'],
         'companies': article['companies'],
-        'topics': article['topics']   
+        'topics': article['topics'],
+        'date': article['date']
     }
 
 def to_detail_view(article):
@@ -33,34 +38,11 @@ def to_detail_view(article):
             'dateline': article['fulltext']['dateline'],
             'body': article['fulltext']['body'],
         },
-        'topics': article['fulltext']['topics'],
+        'topics': article['topics'],
         'places': article['places'],
         'people': article['people'],
         'orgs': article['orgs'],
         'companies': article['companies'],
-        'topics': article['topics']   
+        'topics': article['topics'],
+        'date': article['date']
     }
-
-
-    METADATA = {
-  "newid",
-  "oldid",
-  "cgisplit",
-  "lewissplit",
-  "topics"
-}
-
-FULLTEXT = {
-  "title",
-  "dateline",
-  "body"
-}
-
-LISTITEMS = {
-  "places",
-  "people",
-  "orgs",
-  "exchanges",
-  "companies"
-  "topics"
-}
