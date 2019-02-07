@@ -1,26 +1,18 @@
-specific = {
-  "reuters": {
-      "attr": {
-        "newid",
-        "oldid",
-        "cgisplit",
-        "lewissplit",
-        "topics"
-      }
-    },
+METADATA = {
+  "newid",
+  "oldid",
+  "cgisplit",
+  "lewissplit",
+  "topics"
 }
 
-fulltext = {
-  "text": {
-      "title",
-      "dateline",
-      "body"
-    }
-  }
+FULLTEXT = {
+  "title",
+  "dateline",
+  "body"
+}
 
-
-listitems = {
-  "topics",
+LISTITEMS = {
   "places",
   "people",
   "orgs",

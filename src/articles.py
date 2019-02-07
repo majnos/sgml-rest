@@ -1,4 +1,5 @@
 import json
+from schema import LISTITEMS, METADATA, FULLTEXT
 
 class Articles:
     def __init__(self, file_path):
@@ -15,15 +16,17 @@ class Articles:
     def filter_articles(self, query):
         output = []
         for article in self.raw_data:
-            if self.match_article(self.raw_data, query):
-                output.append(article)
+            if self.match_article(article, query):
+                listModel = ListModel(article)
+                output.append(ModelArticle)
         return output
 
     def match_article(self, article, query):
         for key in query:
             value = query[key]
+            matched_key = self.add_prefix(key)
  #           if self.match_single(self.raw_data[query_key], query_value) or self.match_list(query_value, self.raw_data[query_key]):
-            if self.match_single(self.raw_data[key], value):                
+            if self.match_list(value, article[key]):                
                 return True
             else:
                 return False
@@ -34,8 +37,17 @@ class Articles:
         else:
             return False
 
-    def match_list(self, item1, item2):
-        if (item1 in item2):
+    def match_list(self, item, list):
+        if (item in list):
             return True
         else:
             return False
+    
+    def add_prefix(self, key):
+        if key in METADATA:
+            return 'metadata.'+key
+        if key in LISTITEMS:
+            return 'listitems.'+key
+        if key in FULLTEXT:
+            return 'fulltext.'+key
+
