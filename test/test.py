@@ -2,7 +2,7 @@ import sys
 sys.path.append('../src/')
 import os
 import pytest
-from articles import Articles
+from src.articles import Articles
 
 FIXTURE = 'test_data.fixture.json'
 
@@ -22,7 +22,7 @@ def test_list_query_returns_no_body(test_data):
 def test_api_returns_detail_on_id(test_data):
         article = test_data.get_filtered_detail({'newid':'4'})
         print(article)
-        assert article['newid'] == '4' 
+        assert article['newid'] == '4'
 
 # def test_api_returns_body_in_detail(test_data):
 #         article = test_data.get_filtered_detail({'newid': '4'})
@@ -38,7 +38,7 @@ def test_api_returns_detail_on_id(test_data):
 #     for article in articles:
 #         print(article['meta'])
 #         assert 'dude1' in article['meta']['people']
-        
+
 # def test_logic_returns_fulltext(test_data):
 #     articles = test_data.find_all({'meta.people': 'dude1'})
 #     for article in articles:

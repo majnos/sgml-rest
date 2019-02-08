@@ -7,6 +7,7 @@ name = "pypi"
 beautifulsoup4 = "*"
 flask = "*"
 jsonpath_rw = "*"
+pytest = "*"
 
 [dev-packages]
 yapf = "*"

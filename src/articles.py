@@ -1,8 +1,8 @@
 # logic of the whole app
 
 import json
-from model import to_detail_view, to_list_view
-from nested import getByDot
+from src.model import to_detail_view, to_list_view
+from src.nested import getByDot
 from flask import make_response, jsonify, abort
 
 class Articles:
@@ -27,7 +27,7 @@ class Articles:
             output = []
             for article in self.raw_data:
                 if self.match_single(article, query):
-                    output.append(to_detail_view(article))                 
+                    output.append(to_detail_view(article))
             return output
         except KeyError:
             abort(404)
@@ -75,7 +75,7 @@ class Articles:
                 return False
             else:
                 return True
-            
+
     def match_item2item(self, item1, item2):
         if (item1 == item2):
             return True

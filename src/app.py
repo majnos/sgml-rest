@@ -1,4 +1,4 @@
-# separating to three APIs as requested by the task 
+# separating to three APIs as requested by the task
 # input input could be also xml but it seems that json is more readable
 # reading data just to the memory
 
@@ -7,8 +7,8 @@ DEFAULT_FILE = join(dirname(__file__), '../json-data/reut2-000.json')
 
 from flask import Flask, request, jsonify, make_response
 import os
-from articles import Articles
-pwd = os.path.dirname(__file__) 
+from src.articles import Articles
+pwd = os.path.dirname(__file__)
 template_dir = os.path.join(pwd)
 
 
@@ -18,7 +18,7 @@ app = Flask('Reuters REST', template_folder=template_dir)
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return make_response(jsonify({'Error': 'Not Found'}), 404)  
+    return make_response(jsonify({'Error': 'Not Found'}), 404)
 
 @app.route('/reuters/articles', methods=['GET'])
 def return_overview():
