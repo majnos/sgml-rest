@@ -1,22 +1,22 @@
 # logic of the whole app
 
 import json
-# from schema import METADATA, FULLTEXT
 from model import to_detail_view, to_list_view
 from nested import getByDot
-from flask import make_response, jsonify, render_template, abort
-# from errors import InvalidKey
+from flask import make_response, jsonify, abort
 
 class Articles:
     def __init__(self, file_path):
         with open(file_path) as f:
             self.raw_data = json.load(f)
 
-    def get_filtered_view(self, query={}):
+    def get_filtered_view(self, query):
         try:
             output = []
             for article in self.raw_data:
                 if self.match_all(article, query):
+                    output.append(to_list_view(article))
+                elif not(any(query)):
                     output.append(to_list_view(article))
             return output
         except KeyError:
@@ -27,8 +27,7 @@ class Articles:
             output = []
             for article in self.raw_data:
                 if self.match_single(article, query):
-                    output.append(to_detail_view(article))
-                    return output
+                    output.append(to_detail_view(article))                 
             return output
         except KeyError:
             abort(404)
@@ -88,12 +87,3 @@ class Articles:
             return True
         else:
             return False
-    
-    # def add_prefix(self, key):
-    #     if key in METADATA:
-    #         return 'metadata.'+key
-    #     elif key in FULLTEXT:
-    #         return 'fulltext.'+key
-    #     else:
-    #         return key
-

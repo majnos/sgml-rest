@@ -29,7 +29,7 @@ exec $SHELL
 install
 
 pyenv install
-
+pipenv install
 
 // experimental:
 import os
