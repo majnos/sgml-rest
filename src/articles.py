@@ -10,7 +10,7 @@ class Articles:
         with open(file_path) as f:
             self.raw_data = json.load(f)
 
-    def get_filtered_view(self, query):
+    def get_filtered_view(self, query={}):
         try:
             output = []
             for article in self.raw_data:
@@ -22,7 +22,7 @@ class Articles:
         except KeyError:
             abort(404)
 
-    def get_filtered_detail(self, query):
+    def get_filtered_detail(self, query={}):
         try:
             output = []
             for article in self.raw_data:

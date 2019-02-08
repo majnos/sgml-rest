@@ -8,7 +8,6 @@ DEFAULT_FILE = join(dirname(__file__), '../json-data/reut2-000.json')
 from flask import Flask, request, jsonify, make_response
 import os
 from articles import Articles
-# from errors import InvalidKey
 pwd = os.path.dirname(__file__) 
 template_dir = os.path.join(pwd)
 
