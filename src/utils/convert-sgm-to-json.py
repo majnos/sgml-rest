@@ -24,7 +24,7 @@ def xml_node_to_json(node):
         'unknown': node.find('unknown').text if node.find('unknown') else '',
         'fulltext': {
             'dateline': textNode.find('dateline').text
-            If textNode.find('dateline') else '',
+            if textNode.find('dateline') else '',
             'body': textNode.find('body').text
             if textNode.find('body') else '',
             'title': textNode.find('title').text

@@ -15,7 +15,6 @@ def test_data():
 
 
 def test_list_query_returns_full_lists(test_data):
-    articles = test_data.get_filtered_view()
     assert len(test_data.get_filtered_view()) == 4
 
 
