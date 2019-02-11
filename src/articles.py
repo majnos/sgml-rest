@@ -5,6 +5,7 @@ from model import to_detail_view, to_list_view
 from nested import getByDot
 from flask import make_response, jsonify, abort
 
+
 class Articles:
     def __init__(self, file_path):
         with open(file_path) as f:
@@ -27,7 +28,7 @@ class Articles:
             output = []
             for article in self.raw_data:
                 if self.match_single(article, query):
-                    output.append(to_detail_view(article))                 
+                    output.append(to_detail_view(article))
             return output
         except KeyError:
             abort(404)
@@ -43,10 +44,10 @@ class Articles:
             abort(404)
 
     def match_single(self, article, newid):
-            matched_key = 'metadata.newid'
-            if self.match_item2item(newid, getByDot(article, matched_key)):
-                return True
-            return False
+        matched_key = 'metadata.newid'
+        if self.match_item2item(newid, getByDot(article, matched_key)):
+            return True
+        return False
 
     def match_all(self, article, query):
         for key in query:
@@ -74,7 +75,7 @@ class Articles:
                 return False
             else:
                 return True
-            
+
     def match_item2item(self, item1, item2):
         if (item1 == item2):
             return True

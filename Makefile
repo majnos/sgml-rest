@@ -8,7 +8,7 @@ ensure-pip:
 	pipenv --version
 
 install:
-	pipenv install
+	pipenv --python 3.7.1 install --dev
 
 clean:
 	pipenv --rm

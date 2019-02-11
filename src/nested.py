@@ -1,10 +1,6 @@
 def getByDot(obj, ref):
     """
-    Use MongoDB style 'something.by.dot' syntax to retrieve objects from Python dicts.
-    
-    This also accepts nested arrays, and accommodates the '.XX' syntax that variety.js
-    produces.
-    
+    Accessing nested jsons javascript way
     Usage:
        >>> x = {"top": {"middle" : {"nested": "value"}}}
        >>> q = 'top.middle.nested'
@@ -13,7 +9,7 @@ def getByDot(obj, ref):
     """
     val = obj
     tmp = ref
-    ref = tmp.replace(".XX","[0]")
+    ref = tmp.replace(".XX", "[0]")
     if tmp != ref:
         print("Warning: replaced '.XX' with [0]-th index")
     for key in ref.split('.'):
@@ -25,8 +21,8 @@ def getByDot(obj, ref):
             try:
                 val = val[kyx][idx]
             except IndexError:
-                print("Index: x['{}'][{}] does not exist.".format(kyx,idx))
+                print("Index: x['{}'][{}] does not exist.".format(kyx, idx))
                 raise
-        else: 
+        else:
             val = val[key]
     return(val)

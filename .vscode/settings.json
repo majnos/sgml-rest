@@ -5,5 +5,6 @@
     "python.unitTest.unittestEnabled": false,
     "python.unitTest.nosetestsEnabled": false,
     "python.unitTest.pyTestEnabled": true,
-    "editor.renderWhitespace": "all"
+    "editor.renderWhitespace": "all",
+    "python.pythonPath": "/home/tomasek/.local/share/virtualenvs/sgml-rest-_rRyLdkc/bin/python"
 }

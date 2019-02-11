@@ -1,6 +1,8 @@
 # 2 configurable views
-# one with all info and one just to get the overview, perhaps it could be reduced even more
+# one with all info and one just to get the overview,
+# perhaps it could be reduced even more
 # i am able to reduce the amount of data transfered by this
+
 
 def to_list_view(article):
     return {
@@ -11,7 +13,7 @@ def to_list_view(article):
             'lewissplit': article['metadata']['lewissplit'],
             'topics': article['metadata']['topics']
         },
-        'fulltext':{
+        'fulltext': {
             'title': article['fulltext']['title'],
             'dateline': article['fulltext']['dateline'],
         },
@@ -24,6 +26,7 @@ def to_list_view(article):
         'date': article['date']
     }
 
+
 def to_detail_view(article):
     return {
         'metadata': {
@@ -33,7 +36,7 @@ def to_detail_view(article):
             'lewissplit': article['metadata']['lewissplit'],
             'topics': article['metadata']['topics']
         },
-        'fulltext':{
+        'fulltext': {
             'title': article['fulltext']['title'],
             'dateline': article['fulltext']['dateline'],
             'body': article['fulltext']['body'],

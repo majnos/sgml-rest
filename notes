@@ -1,3 +1,11 @@
+install pyenv:
+https://github.com/pyenv/pyenv-installer
+
+install pipenv:
+sudo -H pip install -U pipenv
+
+
+
 https://stackoverflow.com/questions/4452537/sgml-to-xml-conversion
 https://github.com/ankailou/reuters-preprocessing
 https://code-examples.net/es/docs/scikit_learn/auto_examples/applications/plot_out_of_core_classification
