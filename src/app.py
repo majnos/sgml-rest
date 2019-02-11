@@ -1,6 +1,7 @@
 # separating to three APIs as requested by the task
 # input input could be also xml but it seems that json is more readable
 # reading data just to the memory
+# adding also health endpoint which could be useful for end to end testing
 
 from os.path import join, isfile, dirname
 from flask import Flask, request, jsonify, make_response
@@ -20,11 +21,13 @@ app = Flask('Reuters REST', template_folder=template_dir)
 def page_not_found(e):
     return make_response(jsonify({'Error': 'Not Found'}), 404)
 
+@app.route('/health', methods=['GET'])
+def return_health():
+    return jsonify({'status':'ok'})
 
 @app.route('/reuters/articles', methods=['GET'])
 def return_overview():
     return jsonify(articles.get_filtered_view(request.args))
-
 
 @app.route('/reuters/search', methods=['GET'])
 def return_fulltext():

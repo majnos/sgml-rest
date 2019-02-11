@@ -1,10 +1,15 @@
 {
-    "python.unitTest.pyTestArgs": [
-        "test"
+    "python.unitTest.cwd": "/home/tomasek/Dropbox/work/h2o/sgml-rest",
+    "python.unitTest.unittestArgs": [
+        "-v",
+        "-s", "test",
+        "-p", "test*.py"
     ],
+    "editor.renderWhitespace": "all",
     "python.unitTest.unittestEnabled": false,
     "python.unitTest.nosetestsEnabled": false,
     "python.unitTest.pyTestEnabled": true,
-    "editor.renderWhitespace": "all",
-    "python.pythonPath": "/home/tomasek/.local/share/virtualenvs/sgml-rest-_rRyLdkc/bin/python"
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.pythonPath": "/home/tomasek/.local/share/virtualenvs/sgml-rest-_rRyLdkc/bin/python",
 }
